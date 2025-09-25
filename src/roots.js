@@ -1,9 +1,10 @@
-import {
-  type RouteConfig,
-  route,
-} from "@react-router/dev/routes";
+// import {
+//   type RouteConfig,
+//   route,
+// } from "@react-router/dev/routes";
 
-export default [
-  route("some/path", "./some/file.tsx"),
-  // pattern ^           ^ module file
-] satisfies RouteConfig;
+// export default [
+//   route("/", "./some/file.tsx"),
+//   // pattern ^           ^ module file
+// ] satisfies RouteConfig;
+
