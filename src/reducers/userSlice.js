@@ -1,20 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+//定义状态值 初始值 修改调用函数
 const userSlice = createSlice({
   name: "User",
   initialState: { user: {} },
   reducers: {
-    setUser: (state) => {
-      state.user = { login: "abc" };
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    setCounter: (state, action) => {
-      state.value = action.payload;
+    setUser: (state, action) => {
+      state.user = action.payload;
     },
   },
 });
 
-export const { setUser, decrement, setCounter } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

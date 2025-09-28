@@ -5,16 +5,14 @@ import { increment, decrement } from "src/reducers/counterSlice";
 import { Route, Routes } from "react-router";
 //import Profile from "./pages/Profile";
 import { useNavigate } from "react-router";
-
+import { Link } from "react-router";
 function Home() {
-  const count = useSelector((state) => state.counter.value);
   const [username, setUsername] = useState("bubucuo");
   //const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const userInfo = useSelector((state) => state.user.user);
   return (
     <div>
-      <h1>Counter: {count}</h1>
       <label>
         Input a username
         <input value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -27,6 +25,8 @@ function Home() {
       >
         Search
       </button>
+      <Link to={`/list/${username}`}> List</Link>
+      <span>Twitter:{userInfo.twitter_username}</span>
     </div>
   );
 }
