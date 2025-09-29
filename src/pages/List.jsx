@@ -2,6 +2,9 @@ import { Route, Routes, useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { useState, useEffect } from "react";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+
 function List() {
   const [list, setList] = useState([]);
   const [page, setPage] = useState(1);
@@ -26,18 +29,18 @@ function List() {
     }
   };
   const handleNext = () => {
-    setPage(page + 1);
-  };
+    setPage(page - 0 + 1);
+  }; //ParseInt
   const handlePageChange = (e) => {
     setPage(e.target.value);
   };
-  const handleKeyDown = (e) => {
-    if (e.ctrlKey && e.key === "Enter") {
-      e.preventDefault();
-      // 简单触发表单提交，让 form action 处理
-      e.currentTarget.form?.requestSubmit();
-    }
-  };
+  // const handleKeyDown = (e) => {
+  //   if (e.ctrlKey && e.key === "Enter") {
+  //     e.preventDefault();
+  //     // 简单触发表单提交，让 form action 处理
+  //     e.currentTarget.form?.requestSubmit();
+  //   }
+  // };
   return (
     <>
       <div>
@@ -53,12 +56,17 @@ function List() {
         })}
         <span>Twitter:{userInfo.twitter_username}</span>
       </div>
+      {/* <Pagination
+        count={20}
+        page={page - 0}
+        onChange={(e, page) => {
+          console.log("page", page);
+          setPage(page);
+        }}
+      /> */}
+
       <button onClick={handlePrevious}> Previous page </button>
-      <input
-        value={page}
-        onChange={handlePageChange}
-        onKeyDown={handleKeyDown}
-      />
+      <input value={page} onChange={handlePageChange} />
       <button onClick={handleNext}> Next page</button>
     </>
   );
