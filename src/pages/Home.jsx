@@ -20,12 +20,12 @@ function Home() {
       {/* 跳转路由 */}
       <button
         onClick={(e) => {
-          navigate(`/profile/${username}`);
+          navigate(`profile/${username}`);
         }}
       >
         Search
       </button>
-      <Link to={`/list/${username}`}> List</Link>
+      <Link to={`list/${username}`}> List</Link>
       <span>Twitter:{userInfo.twitter_username}</span>
     </div>
   );

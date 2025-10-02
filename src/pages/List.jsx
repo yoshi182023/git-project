@@ -1,6 +1,6 @@
 import { Route, Routes, useParams } from "react-router";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { useState, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -48,7 +48,9 @@ function List() {
         {list.map((project) => {
           return (
             <div key={project.id}>
-              <span>repo names: {project.name}</span>
+              <Link to={`/profile/${username}/repo/${project.name}`}>
+                repo names: {project.name}
+              </Link>
               <div>stars: {project.stargazers_count} </div>
               <span> languages: {project.language} </span>
             </div>
@@ -56,18 +58,19 @@ function List() {
         })}
         <span>Twitter:{userInfo.twitter_username}</span>
       </div>
-      {/* <Pagination
+      <Pagination
         count={20}
         page={page - 0}
         onChange={(e, page) => {
           console.log("page", page);
           setPage(page);
         }}
-      /> */}
-
-      <button onClick={handlePrevious}> Previous page </button>
+      />
       <input value={page} onChange={handlePageChange} />
-      <button onClick={handleNext}> Next page</button>
+      {/* value和onChange成对出现就是受控,  default value 就是非受控*/}
+      {/* <button onClick={handlePrevious}> Previous page </button>
+
+      <button onClick={handleNext}> Next page</button> */}
     </>
   );
 }

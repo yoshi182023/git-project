@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-
+import List from "./List";
 export default function Profile() {
   // const [isLoading, setIsLoading] = useState(true);
   // const [userInfo, setUserInfo] = useState({
@@ -46,6 +46,7 @@ export default function Profile() {
       <span>Bio: {userInfo.bio}</span>
       <img alt="useravatar" src={userInfo.avatar_url} />
       <Link to="/"> Home </Link>
+      <List />
     </>
   );
 }
